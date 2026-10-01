@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>OVERLORD V25</title>
+  <meta name="description" content="OVERLORD V25 — script hub and loader endpoint.">
+  <style>
+    :root{--bg:#070a12;--card:#0e1422;--line:#202b42;--text:#f5f7ff;--muted:#9aa7bf;--accent:#8b5cf6;--accent2:#06b6d4}
+    *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:radial-gradient(circle at 20% 0%,#17112b 0,#070a12 45%);color:var(--text)}
+    .wrap{width:min(980px,92%);margin:auto;padding:72px 0}.hero{display:grid;gap:24px;grid-template-columns:1.4fr .9fr;align-items:center}
+    @media(max-width:760px){.hero{grid-template-columns:1fr}.wrap{padding:42px 0}}
+    .badge{display:inline-flex;padding:7px 11px;border:1px solid var(--line);border-radius:999px;color:#cbd5e1;background:#0c1120;font-size:13px}
+    h1{font-size:clamp(42px,8vw,78px);line-height:.95;margin:16px 0 12px;letter-spacing:-3px}p{color:var(--muted);line-height:1.65}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 20px 60px #0006}
+    .code{display:block;background:#060914;border:1px solid #1b2437;border-radius:14px;padding:16px;font:14px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;overflow:auto;white-space:pre-wrap}
+    .row{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}.btn{appearance:none;border:0;border-radius:12px;padding:12px 16px;font-weight:700;cursor:pointer;text-decoration:none;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2))}.btn.alt{background:#121a2a;border:1px solid var(--line)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}@media(max-width:760px){.grid{grid-template-columns:1fr}}
+    .item h3{margin:0 0 7px}.item p{margin:0;font-size:14px}
+    footer{margin-top:42px;padding-top:20px;border-top:1px solid var(--line);color:#71809a;font-size:13px}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <span class="badge">OVERLORD V25 • SCRIPT HUB</span>
+        <h1>👑 OVERLORD</h1>
+        <p>Trang giới thiệu và loader endpoint cho OVERLORD V25. Endpoint <b>/Overlord</b> trả trực tiếp mã Luau để executor có thể tải script từ URL.</p>
+        <div class="row">
+          <button class="btn" id="copy">Copy Loader</button>
+          <a class="btn alt" href="/Overlord" target="_blank" rel="noreferrer">Mở /Overlord</a>
+        </div>
+      </div>
+      <div class="card">
+        <strong>Loader</strong>
+        <div class="code" id="loader">loadstring(game:HttpGet("https://overlord.menu/Overlord"))()</div>
+        <p style="font-size:13px;margin-bottom:0">Đường dẫn này chỉ hoạt động sau khi domain đã trỏ tới deployment.</p>
+      </div>
+    </section>
+    <section class="grid">
+      <div class="card item"><h3>🦖 Guard</h3><p>Guard controls, cưỡi Guard và các action remote.</p></div>
+      <div class="card item"><h3>🥚 Auto Farm</h3><p>Quét ProximityPrompt, tìm mục tiêu và hỗ trợ Auto Steal.</p></div>
+      <div class="card item"><h3>🤖 AI</h3><p>Review, Core Check, Error Log và ProximityPrompt 1K Self-Test.</p></div>
+    </section>
+    <footer>OVERLORD V25 — deploy-ready static site.</footer>
+  </main>
+  <script>
+    document.getElementById('copy').addEventListener('click', async () => {
+      const s = document.getElementById('loader').textContent;
+      try { await navigator.clipboard.writeText(s); document.getElementById('copy').textContent='Đã copy ✓'; setTimeout(()=>document.getElementById('copy').textContent='Copy Loader',1300); }
+      catch { alert(s); }
+    });
+  </script>
+</body>
+</html>
